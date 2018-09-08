@@ -27,4 +27,8 @@ describe('HomeComponent', () => {
   it('should contain link with text "Login"', () => {
     expect(fixture.nativeElement.querySelector("#login-link").textContent).toEqual("Login");
   });
+
+  it('should contain link with text "Register"', () => {
+    expect(fixture.nativeElement.querySelector("#register-link").textContent).toEqual("Register");
+  });
 });
