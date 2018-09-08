@@ -1,4 +1,5 @@
 import { AppPage } from './app.po';
+import { element, by } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -7,8 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should navigate to the Login component', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to litpay-web!');
+    element(by.id("login-link")).click();
+    expect(element(by.css("body")).getText()).toContain("login works");
   });
 });
