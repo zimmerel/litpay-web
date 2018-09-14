@@ -1,11 +1,14 @@
 <div class="center-block">
-  <mat-form-field class="test">
-    <input matInput placeholder="Enter your email" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" required>
-    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-    <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
-  </mat-form-field>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="test">
+      <input matInput placeholder="Enter your email" formControlName="email" required>
+      <mat-error *ngIf="registerForm.controls['email']">{{getEmailErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Enter your password" formControlName="password" [type]="hidePassword ? 'password' : 'text'" required>
+      <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <mat-error *ngIf="registerForm.controls['password']">{{getPasswordErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="!registerForm.valid">Login</button>
+  </form>
 </div>
