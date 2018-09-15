@@ -1,6 +1,6 @@
-<div class="center-block">
+<div>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="test">
+    <mat-form-field>
       <input matInput placeholder="Enter your email" formControlName="email" required>
       <mat-error *ngIf="registerForm.controls['email']">{{getEmailErrorMessage()}}</mat-error>
     </mat-form-field>

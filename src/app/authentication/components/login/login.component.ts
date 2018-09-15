@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder, FormGroup,
-  FormControl, Validators
+  FormControl, Validators,
 } from '@angular/forms';
 
 @Component({
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
   getPasswordErrorMessage() {
     return this.registerForm.controls['password']
-    .hasError('required') ? 'You must enter a value' : '';
+      .hasError('required') ? 'You must enter a value' : '';
   }
 
   onSubmit(): void {
