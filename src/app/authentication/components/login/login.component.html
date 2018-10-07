@@ -1,14 +1,14 @@
 <div>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <input matInput placeholder="Enter your email" formControlName="email" required>
-      <mat-error *ngIf="registerForm.controls['email']">{{getEmailErrorMessage()}}</mat-error>
+      <mat-error [hidden]="!emailErrorMessage">{{emailErrorMessage}}</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Enter your password" formControlName="password" [type]="hidePassword ? 'password' : 'text'" required>
-      <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
-      <mat-error *ngIf="registerForm.controls['password']">{{getPasswordErrorMessage()}}</mat-error>
+      <input matInput placeholder="Enter your password" formControlName="password" [type]="passwordType" required>
+      <mat-icon matSuffix (click)="toggleShowPassword()">{{visibilityType}}</mat-icon>
+      <mat-error [hidden]="!passwordErrorMessage">{{passwordErrorMessage}}</mat-error>
     </mat-form-field>
-    <button mat-raised-button type="submit" [disabled]="!registerForm.valid">Login</button>
+    <button mat-raised-button type="submit" [disabled]="disableLoginButton">Login</button>
   </form>
 </div>

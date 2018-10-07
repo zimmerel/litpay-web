@@ -12,7 +12,6 @@ import {
   MatButtonModule, MatInputModule,
   MatIconModule, MatFormFieldModule
 } from '@angular/material';
-// import { MatFormFieldModule } from '@angular/material/form-field';
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -20,26 +19,16 @@ const routes = [
   { path: 'register', component: RegisterComponent }
 ];
 
-const materialModules = [
-  MatButtonModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-];
-
-@NgModule({
-  imports: [...materialModules],
-  exports: [...materialModules]
-})
-export class MaterialModule { }
-
 @NgModule({
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
     BrowserAnimationsModule,
   ],
   declarations: [
