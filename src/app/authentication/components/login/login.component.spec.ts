@@ -34,30 +34,30 @@ describe('LoginComponent', () => {
   });
 
   it('should display error if email is empty', async () => {
-    throw new Error("todo bg");
+    throw new Error('todo bg');
   });
 
   it('should display error if email is invalid', () => {
-    throw new Error("todo bg");
+    throw new Error('todo bg');
   });
 
   it('should not display error if email is valid', () => {
-    throw new Error("todo bg");
+    throw new Error('todo bg');
   });
 
   it('should display error if password is empty', () => {
-    throw new Error("todo bg");
+    throw new Error('todo bg');
   });
 
   it('should display error if password is valid', () => {
-    throw new Error("todo bg");
+    throw new Error('todo bg');
   });
 
   it('should disable login button if loginForm is invalid', () => {
-    throw new Error("todo bg");
+    throw new Error('todo bg');
   });
 
   it('should enable login button if loginForm is valid', () => {
-    throw new Error("todo bg");
+    throw new Error('todo bg');
   });
 });

@@ -18,31 +18,31 @@ export class LoginComponent implements OnInit {
   }
 
   get emailErrorMessage(): string {
-    if (this._emailControl.hasError("required")) {
-      return "Email is required";
+    if (this._emailControl.hasError('required')) {
+      return 'Email is required';
     }
 
-    return this._emailControl.hasError("email")
-      ? "Not a valid email"
-      : "";
+    return this._emailControl.hasError('email')
+      ? 'Not a valid email'
+      : '';
   }
 
   get passwordErrorMessage(): string {
-    return this._passwordControl.hasError("required")
-      ? "Password is required"
-      : "";
+    return this._passwordControl.hasError('required')
+      ? 'Password is required'
+      : '';
   }
 
   get passwordType(): string {
     return this.showPassword
-      ? "text"
-      : "password";
+      ? 'text'
+      : 'password';
   }
 
   get visibilityType(): string {
     return this.showPassword
-      ? "visibility_off"
-      : "visibility";
+      ? 'visibility_off'
+      : 'visibility';
   }
 
   get showPassword(): boolean {
