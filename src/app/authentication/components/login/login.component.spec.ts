@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login.component';
@@ -7,6 +7,8 @@ import { LoginComponent } from './login.component';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let email: FormControl;
+  let password: FormControl;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,37 +29,60 @@ describe('LoginComponent', () => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    email = <FormControl>component.loginForm.controls['email'];
+    password = <FormControl>component.loginForm.controls['password'];
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display error if email is empty', async () => {
-    throw new Error('todo bg');
+  describe("email", () => {
+    it('should have error if email is empty', async () => {
+      email.setValue('');
+      expect(email.errors.required).toBe(true);
+      expect(component.emailErrorMessage).toBeTruthy();
+    });
+
+    it('should have error if email is invalid', () => {
+      email.setValue('wanker');
+      expect(email.errors.email).toBe(true);
+      expect(component.emailErrorMessage).toBeTruthy();
+    });
+
+    it('should not have errors if email is valid', () => {
+      email.setValue('rexbutts@gmail.com');
+      expect(email.errors).toBeFalsy();
+      expect(component.emailErrorMessage).toBeFalsy();
+    });
   });
 
-  it('should display error if email is invalid', () => {
-    throw new Error('todo bg');
+  describe("password", () => {
+    it('should have error if password is empty', () => {
+      password.setValue('');
+      expect(password.errors.required).toBe(true);
+      expect(component.passwordErrorMessage).toBeTruthy();
+    });
+
+    it('should not have error if password is valid', () => {
+      password.setValue('scotchscotchyscotchscotch');
+      expect(password.errors).toBeFalsy();
+      expect(component.passwordErrorMessage).toBeFalsy();
+    });
   });
 
-  it('should not display error if email is valid', () => {
-    throw new Error('todo bg');
-  });
+  describe("form", () => {
+    it('should disable login button if loginForm is invalid', () => {
+      email.setValue('');
+      expect(component.loginForm.valid).toBe(false);
+      expect(component.disableLoginButton).toBe(true);
+    });
 
-  it('should display error if password is empty', () => {
-    throw new Error('todo bg');
-  });
-
-  it('should display error if password is valid', () => {
-    throw new Error('todo bg');
-  });
-
-  it('should disable login button if loginForm is invalid', () => {
-    throw new Error('todo bg');
-  });
-
-  it('should enable login button if loginForm is valid', () => {
-    throw new Error('todo bg');
+    it('should enable login button if loginForm is valid', () => {
+      email.setValue('spongebob@krustykrab.com');
+      password.setValue('bikinibottom');
+      expect(component.loginForm.valid).toBe(true);
+      expect(component.disableLoginButton).toBe(false);
+    });
   });
 });
