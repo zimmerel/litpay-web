@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
 
   get disableLoginButton(): boolean {
-    return !!this.loginForm.errors;
+    return !this.loginForm.valid;
   }
 
   get emailErrorMessage(): string {
