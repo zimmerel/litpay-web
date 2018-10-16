@@ -18,8 +18,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit():void {
-    console.log(this.registerForm.controls["email"].value);
-    console.log(this.registerForm.controls["password"].value);
+  onSubmit(): void {
+    console.log(this.registerForm.controls['email'].value);
+    console.log(this.registerForm.controls['password'].value);
   }
 }

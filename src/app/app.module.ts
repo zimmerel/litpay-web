@@ -10,13 +10,16 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatInputModule,
-  MatIconModule, MatFormFieldModule
+  MatIconModule, MatFormFieldModule,
+  MatDividerModule
 } from '@angular/material';
+import { ForgotPasswordComponent } from './authentication/components/forgot-password/forgot-password.component';
 
 const routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent}
 ];
 
 @NgModule({
@@ -29,13 +32,15 @@ const routes = [
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatDividerModule,
     BrowserAnimationsModule,
   ],
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgotPasswordComponent,
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]

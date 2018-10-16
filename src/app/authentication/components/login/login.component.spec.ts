@@ -37,7 +37,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe("email", () => {
+  describe('email', () => {
     it('should have error if email is empty', async () => {
       email.setValue('');
       expect(email.errors.required).toBe(true);
@@ -57,7 +57,7 @@ describe('LoginComponent', () => {
     });
   });
 
-  describe("password", () => {
+  describe('password', () => {
     it('should have error if password is empty', () => {
       password.setValue('');
       expect(password.errors.required).toBe(true);
@@ -71,7 +71,7 @@ describe('LoginComponent', () => {
     });
   });
 
-  describe("form", () => {
+  describe('form', () => {
     it('should disable login button if loginForm is invalid', () => {
       email.setValue('');
       expect(component.loginForm.valid).toBe(false);
