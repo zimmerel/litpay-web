@@ -8,8 +8,8 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent],
-      imports: [RouterTestingModule]
+      imports: [RouterTestingModule],
+      declarations: [HomeComponent]
     })
       .compileComponents();
   }));
@@ -25,10 +25,10 @@ describe('HomeComponent', () => {
   });
 
   it('should contain link with text "Login"', () => {
-    expect(fixture.nativeElement.querySelector("#login-link").textContent).toEqual("Login");
+    expect(fixture.nativeElement.querySelector('#login').textContent).toEqual('Login');
   });
 
   it('should contain link with text "Register"', () => {
-    expect(fixture.nativeElement.querySelector("#register-link").textContent).toEqual("Register");
+    expect(fixture.nativeElement.querySelector('#register').textContent).toEqual('Register');
   });
 });
