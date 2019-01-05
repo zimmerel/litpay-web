@@ -3,6 +3,9 @@ import {
   FormBuilder, FormGroup,
   FormControl, Validators,
 } from '@angular/forms';
+import { AuthenticationService } from 'src/app/common/services/authentication/authentication.service';
+import { LoginResult } from 'src/app/common/services/authentication/login-result';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -53,10 +56,12 @@ export class LoginComponent implements OnInit {
   private _emailControl = new FormControl('', [Validators.required, Validators.email]);
   private _passwordControl = new FormControl('', [Validators.required]);
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,
+    private _authenticationService: AuthenticationService,
+    private _router: Router) { }
 
   ngOnInit() {
-    this.loginForm = this.fb.group({
+    this.loginForm = this._formBuilder.group({
       email: this._emailControl,
       password: this._passwordControl
     });
@@ -66,8 +71,16 @@ export class LoginComponent implements OnInit {
     this._showPassword = !this._showPassword;
   }
 
-  onSubmit(): void {
-    console.log(this.loginForm.controls['email'].value);
-    console.log(this.loginForm.controls['password'].value);
+  async onSubmit(): Promise<boolean> {
+    const email = this.loginForm.controls['email'].value;
+    const password = this.loginForm.controls['password'].value;
+    
+    const result = await this._authenticationService.login(email, password);
+
+    if (result !== LoginResult.Success) {
+      // TODO show error and return
+    }
+
+    return this._router.navigate(['/dashboard']);
   }
 }

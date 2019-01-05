@@ -88,4 +88,10 @@ describe('LoginComponent', () => {
       expect(component.disableLoginButton).toBe(false);
     });
   });
+
+  describe('onSubmit', () => {
+    it('should call authentication service with username and password', () => {
+      throw new Error('todo bg');
+    });
+  });
 });
