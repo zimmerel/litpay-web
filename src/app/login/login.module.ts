@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CallbackComponent } from './components/callback/callback.component';
 
 @NgModule({
   imports: [
@@ -19,13 +20,15 @@ import { RegisterComponent } from './components/register/register.component';
     RouterModule.forChild([
       { path: '', component: LoginComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent },
+      { path: 'callback', component: CallbackComponent }
     ])
   ],
   declarations: [
     LoginComponent,
     ForgotPasswordComponent,
-    RegisterComponent
+    RegisterComponent,
+    CallbackComponent
   ]
 })
 export class LoginModule { }

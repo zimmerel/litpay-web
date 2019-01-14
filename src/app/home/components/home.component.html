@@ -1,6 +1,7 @@
-<div>
-    <a id="login" [routerLink]="['/login']">Login</a>
+<div *ngIf="!isLoggedIn()">
+    <button id="login" (click)="auth.login()">Login</button>
 </div>
-<div>
-    <a id="register" [routerLink]="['/login/register']">Register</a>
+<div *ngIf="isLoggedIn()">
+    <button id="logout" (click)="auth.logout()">Logout</button>
 </div>
+<button (click)="testLink()">Test</button>

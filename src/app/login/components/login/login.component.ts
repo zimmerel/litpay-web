@@ -1,8 +1,12 @@
+/**
+ * This component is unused until we change our authentication method
+ */
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder, FormGroup,
   FormControl, Validators,
 } from '@angular/forms';
+import { AuthenticationService } from 'src/app/common/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -53,7 +57,10 @@ export class LoginComponent implements OnInit {
   private _emailControl = new FormControl('', [Validators.required, Validators.email]);
   private _passwordControl = new FormControl('', [Validators.required]);
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthenticationService
+    ) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
